@@ -106,6 +106,7 @@ GEM
       ttfunk
     pg (0.18.4)
     pkg-config (1.1.7)
+    puma (3.6.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -193,6 +194,7 @@ DEPENDENCIES
   mechanize
   pdf-reader
   pg
+  puma
   rails (= 4.2.4)
   rails_12factor
   sass-rails (~> 5.0)
