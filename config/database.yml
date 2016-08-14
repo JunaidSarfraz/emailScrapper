@@ -1,0 +1,20 @@
+default: &default
+  adapter:  postgresql
+  encoding: unicode
+  username: apple
+  password: 
+  pool: 5
+
+development:
+  <<: *default
+  database: emailscrapper_development
+
+test:
+  <<: *default
+  database: emailscrapper_test
+
+production:
+  <<: *default
+  database: emailscrapper_production
+  username: corefactory
+  password: <%= ENV['COREFACTORY_DATABASE_PASSWORD'] %>

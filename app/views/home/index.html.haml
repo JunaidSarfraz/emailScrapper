@@ -1,0 +1,12 @@
+.col-md-12
+	.form-group.input-group.mt40
+		= text_field_tag :url_to_scrape, nil, placeholder: "Enter URL here:", class: "form-control base_url_field"
+		= link_to "Extract", "#", class: "btn btn-primary extract-email-button input-group-addon", :"data-url" => extract_urls_count_home_index_path
+.col-md-12
+	%p.hidden.number-of-links Number of links found: 10
+	%p.hidden.processing-status Processing Link Number: 1
+	%p 
+		Emails:
+		= link_to "Refresh", "#", class: "refersh-records", :"data-url" => get_records_home_index_path
+	#recors-div
+
