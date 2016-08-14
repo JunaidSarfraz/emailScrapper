@@ -11,9 +11,6 @@ class HomeController < ApplicationController
 	end
 
 	def get_records
-		puts "-=-=-=-=-=---------"
-		puts params[:query_id]	
-		puts "-=-=-=-=-=---------"
 		render partial: "home/records", locals: { records: Query.find(params[:query_id]).records }
 	end
 end

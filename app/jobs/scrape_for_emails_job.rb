@@ -4,7 +4,6 @@ class ScrapeForEmailsJob
   def perform(base_url, query_id)
   	require 'mechanize'
   	query = Query.find(query_id)
-  	puts "=-=-=-=- Query Id: " + query.id.to_s
   	puts base_url
   	urls_scrapper = []
 		mechanize = Mechanize.new
@@ -17,7 +16,6 @@ class ScrapeForEmailsJob
 			emails = final_content.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i)
 			puts page.uri
 			if emails.present?
-				puts "=-=-=-=-=- Some Emails =-=-=-=-=--\n"
 				emails.each do |email|
 					unless query.records.pluck(:email).include?(email)
 						if Record.where(:email => email).count > 0
@@ -28,7 +26,6 @@ class ScrapeForEmailsJob
 						puts email
 					end
 				end
-				puts "=-=-=-=-=- Some Emails =-=-=-=-=--\n"
 			end
 			page.links.each do |link|
 				arr << link
@@ -43,7 +40,6 @@ class ScrapeForEmailsJob
 			  	emails = final_content.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i)
 					puts page1.uri
 					if emails.present?
-						puts "=-=-=-=-=- Some Emails =-=-=-=-=--\n"
 						emails.each do |email|
 							unless query.records.pluck(:email).include?(email)
 								if Record.where(:email => email).count > 0
@@ -54,7 +50,6 @@ class ScrapeForEmailsJob
 								puts email
 							end
 						end
-						puts "=-=-=-=-=- Some Emails =-=-=-=-=--\n"
 					end
 			  	if page1.class.name == "Mechanize::Page"
 				  	page1.links.each do |link1|
