@@ -13,24 +13,35 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery.showLoading
+//= require jquery.showLoading.min
+
 
 $(document).ready(function(){
+	var existing_url = ""
 	$('body').on('click', '.extract-email-button', function(){
 		var base_url = $('.base_url_field').val();
-		var request_url = $(this).data( "url" );
-		send_ajax_request("post", 
-			request_url,
-			"json",
-			{
-				base_url: base_url
-			},
-			function(data){
-				$('.refersh-records').data('query', data);
-			},
-			function(jqXHR, exception){
-				console.log(exception);
-			}
-		);
+		if(existing_url == "" || existing_url != base_url){
+			existing_url = base_url
+			var request_url = $(this).data( "url" );
+			send_ajax_request("post", 
+				request_url,
+				"json",
+				{
+					base_url: base_url
+				},
+				function(data){
+					if(data == false){
+						alert("Please wait till already entered qurries completed!!!!")
+					} else {
+						$('.refersh-records').data('query', data);
+					}
+				},
+				function(jqXHR, exception){
+					console.log(exception);
+				}
+			);
+		}
 	})
 
 	$('body').on('click', '.refersh-records', function(){

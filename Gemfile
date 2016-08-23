@@ -26,7 +26,7 @@ gem 'haml'
 gem "better_errors"
 gem 'sucker_punch', '~> 2.0'
 gem 'rails_12factor'
-
+gem 'pdf-reader'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
